@@ -1,0 +1,444 @@
+/* ═══════════════════════════════════════════
+   EXPERIENCE — Holographic Command Center
+═══════════════════════════════════════════ */
+.experience {
+  padding: 130px 6% 140px;
+  position: relative;
+  overflow: hidden;
+  margin-top: -100px;
+}
+
+/* ── POWER-ON SWEEP ─────────────────────── */
+.exp-sweep {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(109,142,255,0.08) 0%,
+    transparent 100%
+  );
+  transform: translateY(-100%);
+  transition: transform 1.2s cubic-bezier(0.22,1,0.36,1);
+  pointer-events: none;
+  z-index: 0;
+}
+.exp-sweep--done {
+  transform: translateY(100%);
+}
+
+/* ── CONTAINER ──────────────────────────── */
+.exp-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── LABEL ──────────────────────────────── */
+.exp-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: "Space Mono", monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(75, 99, 165, 0.918);
+  text-shadow: 0 0 20px rgba(109, 77, 165, 0.855);
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.exp-label.vis { opacity: 1; transform: translateY(0); }
+
+.exp-label-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #6d8eff;
+  box-shadow: 0 0 8px #6d8eff;
+  animation: dotPulse 2s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%,100% { opacity:1;  transform:scale(1);  }
+  50%      { opacity:.3; transform:scale(.6); }
+}
+
+/* ── HEADLINE ───────────────────────────── */
+.exp-headline {
+  font-family: "Syne", sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  color: #f9f8f8;
+  letter-spacing: -1.5px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
+}
+.exp-headline.vis { opacity: 1; transform: translateY(0); }
+
+/* ── SUB ────────────────────────────────── */
+.exp-sub {
+  font-family: "Space Mono", monospace;
+  font-size: 0.75rem;
+  color: rgba(138, 154, 226, 0.6);
+  letter-spacing: 1px;
+  margin-bottom: 50px;
+  opacity: 0;
+  transition: opacity 0.6s ease 0.2s;
+}
+.exp-sub.vis { opacity: 1; }
+
+/* ── HOLO CENTER ────────────────────────── */
+.holo-center {
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+}
+.holo-center.vis { opacity: 1; transform: translateY(0); }
+
+/* hex grid background */
+.holo-hex-bg {
+  position: absolute;
+  inset: -40px;
+  opacity: 0.03;
+  background-image:
+    repeating-linear-gradient(
+      60deg,
+      rgba(109,142,255,1) 0px,
+      rgba(109,142,255,1) 1px,
+      transparent 1px,
+      transparent 30px
+    ),
+    repeating-linear-gradient(
+      120deg,
+      rgba(109,142,255,1) 0px,
+      rgba(109,142,255,1) 1px,
+      transparent 1px,
+      transparent 30px
+    );
+  pointer-events: none;
+}
+
+/* ── PANELS GRID ────────────────────────── */
+.panels-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* ── MISSION PANEL ──────────────────────── */
+.mission-panel {
+  position: relative;
+  background: transparent;
+  border: 2px solid rgba(245, 246, 250, 0.4);
+  border-radius: 19px;
+  overflow: hidden;
+  cursor: pointer;
+  transform: rotate(var(--tilt)) translateY(30px);
+  opacity: 0;
+  transition:
+    opacity    0.5s ease var(--delay),
+    transform  0.6s cubic-bezier(0.34,1.2,0.64,1) var(--delay),
+    border-color 0.3s ease,
+    box-shadow   0.3s ease,
+    background   0.3s ease;
+
+  /* glass */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* flicker in */
+.mission-panel--in {
+  opacity: 1;
+  transform: rotate(var(--tilt)) translateY(0);
+}
+
+/* hover */
+.mission-panel:hover {
+  border-color: color-mix(in srgb, var(--col) 40%, transparent);
+  box-shadow:
+    0 0 30px color-mix(in srgb, var(--col) 12%, transparent),
+    0 20px 50px rgba(0,0,0,0.4);
+  transform: rotate(0deg) translateY(-6px) !important;
+  background: rgba(8,12,34,0.88);
+}
+
+/* expanded */
+.mission-panel--expanded {
+  border-color: color-mix(in srgb, var(--col) 55%, transparent);
+  box-shadow:
+    0 0 50px color-mix(in srgb, var(--col) 18%, transparent),
+    0 0 100px color-mix(in srgb, var(--col) 8%, transparent),
+    0 24px 60px rgba(0,0,0,0.5);
+  transform: rotate(0deg) translateY(-8px) !important;
+  background: rgba(8,12,34,0.95);
+}
+
+/* dimmed */
+.mission-panel--dimmed {
+  opacity: 0.3;
+  filter: blur(1px);
+}
+
+/* active station */
+.mission-panel--active {
+  border-color: rgba(110, 231, 183, 0.25);
+}
+
+/* active breathing */
+.active-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 25px;
+  box-shadow: inset 0 0 40px rgba(110,231,183,0.06);
+  animation: activeBreath 3s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes activeBreath {
+  0%,100% { opacity: 0.5; }
+  50%      { opacity: 1;   }
+}
+
+/* ── CRT FLICKER ────────────────────────── */
+.holo-flicker {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(255,255,255,0.015) 50%,
+    transparent 50%
+  );
+  background-size: 100% 3px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.4;
+}
+
+/* ── SCANLINE ───────────────────────────── */
+.holo-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--scan-col, rgba(109,142,255,0.06)) 50%,
+    transparent 100%
+  );
+  animation: scanMove var(--scan-speed, 3s) linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes scanMove {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(350%);  }
+}
+
+/* ── GRID PATTERN ───────────────────────── */
+.holo-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(109, 143, 255, 0.071) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(109, 143, 255, 0.158) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── CORNER RETICLES ────────────────────── */
+.reticle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--rc);
+  border-style: solid;
+  border-width: 0;
+  opacity: 0.5;
+  transition: opacity 0.3s, width 0.3s, height 0.3s;
+  z-index: 3;
+}
+.reticle--active { opacity: 1; width: 20px; height: 20px; }
+
+.reticle-tl { top:    8px; left:   8px; border-top-width:    1.5px; border-left-width:  1.5px; }
+.reticle-tr { top:    8px; right:  8px; border-top-width:    1.5px; border-right-width: 1.5px; }
+.reticle-bl { bottom: 8px; left:   8px; border-bottom-width: 1.5px; border-left-width:  1.5px; }
+.reticle-br { bottom: 8px; right:  8px; border-bottom-width: 1.5px; border-right-width: 1.5px; }
+
+/* ── PANEL INNER ────────────────────────── */
+.panel-inner {
+  position: relative;
+  z-index: 2;
+  padding: 28px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* top row */
+.panel-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-station {
+  font-family: "Space Mono", monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: rgba(160,185,255,0.35);
+  text-transform: uppercase;
+}
+
+.panel-status {
+  font-family: "Space Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  color: rgba(206, 215, 239, 0.942);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.panel-status--active {
+  color: #6ee7b7;
+  text-shadow: 0 0 8px rgba(110,231,183,0.5);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #6ee7b7;
+  box-shadow: 0 0 8px #6ee7b7;
+  animation: statusPulse 1.5s ease-in-out infinite;
+}
+@keyframes statusPulse {
+  0%,100% { opacity:1; transform:scale(1);   }
+  50%      { opacity:.4; transform:scale(.7); }
+}
+
+/* company */
+.panel-company {
+  font-family: "Syne", sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 900;
+  color: #e8f0ff;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  text-shadow: 0 0 20px color-mix(in srgb, var(--col) 30%, transparent);
+}
+
+/* meta */
+.panel-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.panel-role {
+  font-family: "Space Mono", monospace;
+  font-size: 0.95rem;
+  color: color-mix(in srgb, var(--col) 80%, white);
+  letter-spacing: 0.5px;
+}
+
+.panel-period {
+  font-family: "Space Mono", monospace;
+  font-weight: 800px;
+  font-size: 0.82rem;
+  color: rgba(160, 185, 255, 0.688);
+  letter-spacing: 0.5px;
+}
+
+/* expand hint */
+.panel-hint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  opacity: 0.3;
+}
+.hint-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(160,185,255,0.2);
+}
+.hint-text {
+  font-family: "Space Mono", monospace;
+  font-size: 0.52rem;
+  letter-spacing: 2px;
+  color: rgba(202, 211, 236, 0.914);
+  white-space: nowrap;
+}
+
+/* ── EXPANDED POINTS ────────────────────── */
+.panel-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(160,185,255,0.08);
+}
+
+.panel-point {
+  display: flex;
+  gap: 10px;
+  font-family: "Space Mono", monospace;
+  font-size: 0.75rem;
+  line-height: 1.7;
+  color: rgba(190,210,255,0.7);
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: pointIn 0.4s ease forwards;
+}
+
+@keyframes pointIn {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.point-arrow {
+  color: var(--col);
+  font-size: 0.6rem;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+/* ── RESPONSIVE ─────────────────────────── */
+@media (max-width: 860px) {
+  .panels-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .mission-panel {
+    transform: rotate(0deg) translateY(30px) !important;
+  }
+  .mission-panel--in {
+    transform: rotate(0deg) translateY(0) !important;
+  }
+  .mission-panel:hover,
+  .mission-panel--expanded {
+    transform: rotate(0deg) translateY(-4px) !important;
+  }
+  .experience { padding: 90px 5% 100px; }
+}
+
+@media (max-width: 560px) {
+  .experience { padding: 70px 5% 80px; }
+  .exp-headline { font-size: 2rem; }
+  .panel-inner { padding: 22px 20px 20px; }
+  .panel-company { font-size: 1.2rem; }
+  .panel-point { font-size: 0.68rem; }
+}

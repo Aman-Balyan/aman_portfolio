@@ -1,0 +1,262 @@
+/* ── LABEL — matches Experience + About ── */
+.contact{
+  margin-top: -100px;
+}
+
+
+.contact-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: "Space Mono", monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(75, 99, 165, 0.918);
+  text-shadow: 0 0 20px rgba(109, 77, 165, 0.855);
+  margin-bottom: 16px;
+}
+
+.contact-label-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #6d8eff;
+  box-shadow: 0 0 8px #6d8eff;
+  animation: contactDotPulse 2s ease-in-out infinite;
+}
+
+@keyframes contactDotPulse {
+  0%, 100% { opacity: 1;   transform: scale(1);   }
+  50%       { opacity: 0.3; transform: scale(0.6); }
+}
+
+/* ── MAIN HEADING ───────────────────────── */
+.contact-headline-main {
+  font-family: "Syne", sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  color: #fff4e8;
+  letter-spacing: -1.5px;
+  line-height: 1.2;
+  margin-bottom: 50px;
+}
+
+
+
+.contact {
+  padding: 120px 6% 60px;
+  position: relative;
+}
+
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* ── LEFT ── */
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.contact-headline {
+  font-family: "Syne", sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #e0eaff;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.contact-headline-accent {
+  background: linear-gradient(135deg, #6d8eff, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+ 
+
+.contact-subtext {
+  font-family: "Inter", sans-serif;
+  font-size: 0.97rem;
+  line-height: 1.85;
+  color: rgba(218, 207, 233, 0.904);
+  text-shadow: 0 0 10px rgb(186, 168, 218);
+  font-weight: 300;
+  max-width: 380px;
+}
+
+/* copy email button */
+.contact-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: 2px solid rgba(123, 87, 196, 0.379);
+  background: rgba(109, 142, 255, 0.08);
+  color: rgba(156, 135, 234, 0.85);
+  font-family: "Space Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: 0.25s;
+  width: fit-content;
+}
+
+.contact-copy-btn:hover {
+  background: rgba(109, 143, 255, 0);
+  border-color: rgba(148, 109, 255, 0.692);
+  color: #fff;
+   box-shadow: 0 0 30px rgba(109, 142, 255, 0.15),
+              0 0 60px rgba(109, 142, 255, 0.08);
+  transition: all 0.3s ease;
+  
+}
+
+.contact-copy-btn--copied {
+  background: rgba(229, 233, 232, 0);
+  border-color: rgba(146, 246, 197, 0.462);
+  color: #94f9a1;
+}
+
+/* availability */
+.contact-available {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Space Mono", monospace;
+  font-size: 0.98rem;
+  letter-spacing: 0.5px;
+  color: rgba(75, 236, 137, 0.75);
+  text-shadow: 0 0 20px rgba(71, 196, 71, 0.855);
+}
+
+.contact-avail-dot {
+  width: 9px;
+  height: 9px;
+  background: #6ee7b7;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #6ee7b7;
+  flex-shrink: 0;
+  animation: availPulse 2s ease-in-out infinite;
+}
+
+@keyframes availPulse {
+  0%, 100% { opacity: 1;   transform: scale(1);    }
+  50%       { opacity: 0.4; transform: scale(0.65); }
+}
+
+/* ── RIGHT ── */
+.contact-right {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 24px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(140, 89, 211, 0.1);
+  transition: 0.25s;
+}
+
+.contact-card:hover {
+  background: rgba(109, 142, 255, 0.06);
+  border-color: rgba(155, 109, 255, 0.415);
+  transform: translateX(6px);
+  box-shadow: 0 0 30px rgba(109, 142, 255, 0.15),
+              0 0 60px rgba(109, 142, 255, 0.08);
+  transition: all 0.3s ease; 
+}
+
+.contact-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(109, 142, 255, 0.1);
+  border: 1px solid rgba(164, 86, 237, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.contact-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contact-card-label {
+  font-family: "Space Mono", monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(116, 145, 223, 0.941);
+ 
+}
+
+.contact-card-value {
+  font-family: "Space Mono", monospace;
+  font-size: 0.9rem;
+  color: rgba(251, 251, 251, 0.979);
+  text-shadow: 0 0 20px rgba(109, 77, 165, 0.855);
+  font-weight: 400;
+}
+
+.contact-card-link {
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-card-link:hover {
+  color: #fff;
+}
+
+/* ── FOOTER ── */
+.contact-footer {
+  margin-top: 100px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+}
+
+.contact-footer-text {
+  font-family: "Space Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 1px;
+  color: rgba(227, 230, 239, 0.775);
+  text-shadow: 0 0 5px rgba(232, 232, 232, 0.988);
+}
+
+.contact-footer-name {
+  color: rgba(160, 185, 255, 0.6);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .contact { padding: 80px 5% 50px; }
+}

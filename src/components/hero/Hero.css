@@ -1,0 +1,685 @@
+/* ============================================================
+   HERO — Moon-skin typography, clean space aesthetic
+   Fonts: Syne (headings) · Space Mono (mono/badges) · Inter (body)
+   Import in index.html or globals.css (see note at bottom)
+============================================================ */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 110px 6% 70px;
+}
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-container {
+  width: 100%;
+  max-width: 1360px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* ═══════════════════════════════════════════
+   LEFT — CONTENT
+═══════════════════════════════════════════ */
+.hero-left {
+  display: flex;
+  flex-direction: column;
+}
+
+/* — status badge — */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: rgba(160, 185, 255, 0.06);
+  border: 1px solid rgba(180, 194, 232, 0);
+  color: rgba(98, 244, 112, 0.7);
+  font-family: "Space Mono", monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 7px 18px;
+  border-radius: 100px;
+  margin-bottom: 32px;
+  width: fit-content;
+}
+
+.hero-badge-dot {
+  width: 7px;
+  height: 7px;
+  /* background: #a0c8ff; */
+  background: #34d059;
+  border-radius: 50%;
+  /* box-shadow: 0 0 7px #a0c8ff; */
+   box-shadow: 0 0 7px rgba(98, 244, 112, 0.7);
+  animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { opacity: 1;   transform: scale(1);   }
+  50%       { opacity: 0.3; transform: scale(0.65); }
+}
+
+/* — greeting — */
+.hero-greeting {
+  font-family: "Space Mono", monospace;
+  font-size: 1.2 rem;
+  font-weight: 600px;
+  /* color: rgba(160, 185, 255, 0.5); */
+  color: rgba(245, 242, 246, 0.947); 
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* — name — */
+.hero-name {
+  font-family: "Syne", sans-serif;
+  font-size: clamp(3.4rem, 6.5vw, 6.2rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -2.5px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+/* moonstone gradient — silver → ice-blue → soft violet */
+.name-highlight {
+  background: linear-gradient(
+    138deg,
+    #c5b4e1  0%,
+    #a092f1 28%,
+    #6c6ce8db 52%,
+    #d4cbf3 76%,
+    #e0eaff 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* subtle shimmer animation */
+  background-size: 200% 200%;
+  animation: moonShimmer 6s ease-in-out infinite;
+}
+
+@keyframes moonShimmer {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+/* — typewriter — */
+.hero-typewriter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  margin-bottom: 30px;
+}
+
+.hero-typewriter-prefix {
+  font-family: "Space Mono", monospace;
+  font-size: 0.85rem;
+  color: rgba(160, 185, 255, 0.3);
+}
+
+.hero-typewriter-text {
+  font-family: "Space Mono", monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  /* color: rgba(200, 220, 255, 0.75); */
+  color: rgba(209, 220, 238, 0.718);
+  letter-spacing: 0.5px;
+  min-width: 250px;
+}
+
+.hero-typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: rgba(160, 185, 255, 0.8);
+  border-radius: 1px;
+  margin-left: 3px;
+  vertical-align: middle;
+  animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* — description — */
+.hero-description {
+  /* font-family: "Inter", sans-serif; */
+  font-family: "Space Mono", monospace;
+  font-size: 1.1rem;
+  line-height: 1.9;
+  /* color: rgba(142, 142, 243, 0.468); */
+  /* color: rgba(209, 200, 220, 0.848);
+   text-shadow: 0 0 10px rgb(201, 198, 207); */
+   text-shadow: 0 0 4px rgba(139, 132, 155, 0.855);
+  color: rgba(138, 154, 226, 0.955);
+  max-width: 500px;
+  margin-bottom: 44px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+}
+
+/* — buttons — */
+.hero-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 44px;
+}
+
+/* — socials — */
+/* .hero-socials {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+} */
+
+.hero-socials {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+
+.hero-socials a {
+  width: 90px;
+  height: 55px;
+  border-radius: 71px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(160, 185, 255, 0.05);
+  border: 2px solid rgba(196, 209, 244, 0);
+  color: rgb(225, 231, 246);
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.hero-socials a:hover {
+  transform: translateY(-4px);
+  color: rgba(200, 220, 255, 0.9);
+  border-color: rgba(160, 185, 255, 0.35);
+  background: rgba(160, 185, 255, 0.08);
+  box-shadow: 0 6px 22px rgba(130, 160, 255, 0.18);
+}
+
+/* — stats strip — */
+.hero-stats {
+  display: flex;
+  gap: 36px;
+  height: auto;
+  margin-top: 44px;
+  padding-top: 32px;
+  color: rgba(75, 99, 165, 0.918);
+   text-shadow: 0 0 20px rgba(109, 77, 165, 0.855);
+  /* border-top: 1px solid rgba(160, 185, 255, 0.08); */
+  width: 100%;
+  justify-content: center;
+}
+
+.hero-stat-num {
+  display: block;
+  font-family: "Space Mono", monospace;
+  /* font-family: "Syne", sans-serif; */
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #e8f0ff;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+.hero-stat-label {
+  display: block;
+  font-family: "Space Mono", monospace;
+  font-size: 0.95rem;
+  color: rgba(123, 149, 209, 0.75);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+/* ═══════════════════════════════════════════
+   RIGHT — PLANET SCENE
+═══════════════════════════════════════════ */
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.planet-scene {
+  position: relative;
+  width: 560px;
+  height: 560px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+/* ─── PLANET CORE ──────────────────────── */
+.planet-core {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  z-index: 4;
+}
+
+/* moon-grey base with faint cool tint */
+.planet-surface {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%,
+      #d0d8e8 0%,
+      #8898b8 22%,
+      #4a5878 52%,
+      #1e2840 78%,
+      #0d1428 100%);
+}
+
+/* subtle horizontal bands */
+.planet-bands {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    repeating-linear-gradient(
+      108deg,
+      rgba(255,255,255,0.025) 0px,
+      rgba(255,255,255,0.010) 18px,
+      transparent           36px
+    );
+  mix-blend-mode: screen;
+  animation: bandsDrift 45s linear infinite;
+}
+
+@keyframes bandsDrift {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+
+/* craters */
+.planet-craters {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.crater {
+  position: absolute;
+  border-radius: 50%;
+  /* dark rim + lighter inner for realism */
+  background:
+    radial-gradient(circle at 35% 30%,
+      rgba(255,255,255,0.06) 0%,
+      rgba(0,0,0,0.0) 40%,
+      rgba(0,0,0,0.18) 70%,
+      rgba(0,0,0,0.28) 100%);
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+/* positions are % of the planet-core 190px */
+.c1 { width: 34px; height: 34px; top: 28px;  left: 52px;  }
+.c2 { width: 22px; height: 22px; top: 90px;  left: 28px;  }
+.c3 { width: 46px; height: 46px; top: 110px; left: 95px;  }
+.c4 { width: 16px; height: 16px; top: 44px;  left: 120px; }
+.c5 { width: 28px; height: 28px; top: 60px;  left: 148px; }
+
+/* terminator shadow — dark half on the right */
+.planet-shadow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 78% 58%,
+      rgba(0,0,0,0.0)  20%,
+      rgba(0,0,0,0.45) 60%,
+      rgba(0,0,0,0.72) 100%);
+}
+
+/* atmosphere rim — thin blue-white glow */
+.planet-atmo {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(180, 210, 255, 0.22);
+  filter: blur(2.5px);
+}
+
+/* outer breathing halo */
+.planet-halo {
+  position: absolute;
+  inset: -36px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(130, 170, 255, 0.16) 0%,
+    rgba(100, 140, 220, 0.06) 50%,
+    transparent 72%);
+  filter: blur(16px);
+  animation: haloBreath 5s ease-in-out infinite;
+}
+
+@keyframes haloBreath {
+  0%, 100% { opacity: 0.55; transform: scale(1);    }
+  50%       { opacity: 1;    transform: scale(1.07); }
+}
+
+/* ─── ORBIT RINGS ──────────────────────── */
+
+
+/* ─── SCROLL ───────────────────────────── */
+.scroll-down {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  color: rgba(160, 185, 255, 0.35);
+  font-family: "Space Mono", monospace;
+  font-size: 0.55rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.scroll-down-line {
+  width: 1px;
+  height: 44px;
+  background: linear-gradient(180deg, rgba(160,185,255,0.5), transparent);
+  animation: scrollPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.25; transform: scaleY(1);    }
+  50%       { opacity: 0.9;  transform: scaleY(1.08); }
+}
+
+/* ── ALIEN ENTITY (keep class, no content) ── */
+.alien-entity { display: none; }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+
+/* ── TABLET LANDSCAPE (1080px) ── */
+@media (max-width: 1080px) {
+  .hero {
+    padding: 110px 5% 80px;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .hero-left {
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-badge {
+    align-self: center;
+  }
+
+  .hero-greeting {
+    text-align: center;
+  }
+
+  .hero-name {
+    text-align: center;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+  }
+
+  .hero-typewriter {
+    justify-content: center;
+  }
+
+  .hero-description {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 560px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    width: 100%;
+  }
+
+ 
+
+  .hero-stats {
+    justify-content: center;
+    width: 100%;
+    gap: 32px;
+  }
+
+  .hero-right {
+    display: none;
+  }
+}
+
+/* ── TABLET PORTRAIT (768px) ── */
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 5% 70px;
+  }
+
+  .hero-name {
+    font-size: clamp(2.4rem, 8vw, 3.8rem);
+    letter-spacing: -1.5px;
+  }
+
+  .hero-badge {
+    font-size: 0.7rem;
+    padding: 6px 16px;
+    letter-spacing: 1.5px;
+  }
+
+  .hero-greeting {
+    font-size: 0.85rem;
+  }
+
+  .hero-typewriter {
+    height: auto;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .hero-typewriter-text {
+    font-size: 0.9rem;
+    min-width: unset;
+  }
+
+  .hero-description {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+
+  .hero-buttons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+
+
+
+  .hero-socials a {
+    width: 48px;
+    height: 48px;
+    font-size: 1rem;
+    border-radius: 12px;
+  }
+
+  .hero-stats {
+    gap: 24px;
+    margin-top: 32px;
+    padding-top: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-stat-num {
+    font-size: 1.8rem;
+  }
+
+  .hero-stat-label {
+    font-size: 0.58rem;
+    letter-spacing: 1px;
+  }
+}
+
+/* ── MOBILE (480px) ── */
+@media (max-width: 480px) {
+  .hero {
+    padding: 90px 5% 60px;
+  }
+
+  .hero-badge {
+    font-size: 0.62rem;
+    padding: 5px 14px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+
+  .hero-badge-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .hero-greeting {
+    font-size: 0.78rem;
+    margin-bottom: 8px;
+  }
+
+  .hero-name {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+  }
+
+  .hero-typewriter {
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+
+  .hero-typewriter-prefix {
+    font-size: 0.75rem;
+  }
+
+  .hero-typewriter-text {
+    font-size: 0.82rem;
+    min-width: unset;
+  }
+
+  .hero-description {
+    font-size: 0.88rem;
+    line-height: 1.75;
+    margin-bottom: 28px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+
+
+  .hero-socials a {
+    width: 44px;
+    height: 44px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+
+  .hero-stats {
+    gap: 18px;
+    margin-top: 28px;
+    padding-top: 20px;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .hero-stat-num {
+    font-size: 1.6rem;
+    letter-spacing: 0px;
+  }
+
+  .hero-stat-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.8px;
+  }
+}
+
+/* ── SMALL MOBILE (360px) ── */
+@media (max-width: 360px) {
+  .hero {
+    padding: 80px 4% 50px;
+  }
+
+  .hero-name {
+    font-size: 1.9rem;
+  }
+
+  .hero-stats {
+    gap: 12px;
+  }
+
+  .hero-stat-num {
+    font-size: 1.4rem;
+  }
+
+  .hero-buttons {
+    width: 90%;
+  }
+}

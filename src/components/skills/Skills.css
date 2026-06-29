@@ -1,0 +1,269 @@
+/* ═══════════════════════════════════════════
+   SKILLS
+═══════════════════════════════════════════ */
+.skills {
+   padding: 130px 6% 140px;
+  position: relative;
+  overflow: hidden;
+  margin-top: -100px;
+
+}
+
+.skills-pills-outer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skills-container {
+   align-items: center;
+  max-width: auto;
+  margin: 0 auto;
+  padding: 0 6%;
+}
+
+
+  /* color: rgba(75, 99, 165, 0.918);
+   text-shadow: 0 0 20px rgba(109, 77, 165, 0.855); */
+   /* font-family: "Space Mono", monospace; */
+/* ── LABEL ──────────────────────────────── */
+.skills-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: "Space Mono", monospace;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(75, 99, 165, 0.918);
+  text-shadow: 0 0 20px rgba(109, 77, 165, 0.855);
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.skills-label.vis {
+  opacity: 1;
+  transform: translateY(0);
+}
+.skills-label-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #6d8eff;
+  box-shadow: 0 0 8px #6d8eff;
+  animation: dotPulse 2s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%,100% { opacity: 1;  transform: scale(1);   }
+  50%      { opacity: .3; transform: scale(.6);  }
+}
+
+/* ── HEADLINE ───────────────────────────── */
+.skills-headline {
+  
+  font-family: "Syne", sans-serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 800;
+  
+  color: #e8f0ff;
+  letter-spacing: -1px;
+  margin-bottom: 36px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
+}
+.skills-headline.vis {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── FILTERS ────────────────────────────── */
+.skills-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* 👈 KEY FIX */
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 48px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+}
+.skills-filters.vis {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.filter-btn {
+  font-family: "Space Mono", monospace;
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 300px;
+  border: 1px solid rgba(146, 124, 174, 0.685);
+  background: transparent;
+  color: rgb(117, 80, 186);
+  text-shadow: 0 0 40px rgba(154, 124, 209, 0.918);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.filter-btn:hover {
+  border-color: rgba(109, 142, 255, 0.4);
+  color: rgba(200, 220, 255, 0.85);
+  background: rgba(109, 142, 255, 0.07);
+}
+
+.filter-btn--active {
+  border-color: rgba(109, 143, 255, 0.16);
+  color: #fff;
+  background: rgba(109, 142, 255, 0.12);
+  box-shadow: 0 0 30px rgb(157, 98, 208);
+}
+
+/* ── PILLS CONTAINER ────────────────────── */
+.skills-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 12px;
+  width: 100%;
+}
+
+/* ── SKILL PILL ─────────────────────────── */
+.skill-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;  
+  gap: 8px;
+  width: auto;
+  padding: 11px 20px;
+
+  /* glass — matches about cards */
+  background: transparent;
+  /* backdrop-filter: blur(16px); */
+  /* -webkit-backdrop-filter: blur(16px); */
+  border: 0.9px solid rgba(96, 92, 103, 0.737);
+  border-radius: 100px;
+
+  cursor: default;
+  overflow: hidden;
+
+  /* start hidden — flies in */
+  opacity: 0;
+  transform: translate(var(--tx), var(--ty)) scale(0.85);
+ transition:
+  opacity      0.55s ease var(--delay),
+  transform    0.55s cubic-bezier(0.34, 1.2, 0.64, 1) var(--delay),
+  border-color 0.15s ease,
+  background   0.15s ease,
+  box-shadow   0.15s ease;
+}
+
+/* visible — flies into place */
+.skill-pill--visible {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* hidden — filtered out */
+
+/* hovered */
+.skill-pill--hovered {
+  background: color-mix(in srgb, var(--col) 12%, rgba(255,255,255,0.03));
+  border-color: color-mix(in srgb, var(--col) 50%, transparent);
+  box-shadow:
+    0 0 20px color-mix(in srgb, var(--col) 20%, transparent),
+    0 0 40px color-mix(in srgb, var(--col) 8%, transparent);
+  transform: translateY(-4px) scale(1.05) !important;
+  transition:
+    border-color 0.12s ease,
+    background   0.12s ease,
+    box-shadow   0.12s ease,
+    transform    0.18s ease !important;
+}
+
+/* dimmed */
+.skill-pill--dimmed {
+  opacity: 0.25;
+  transition:
+    opacity     0.25s ease,
+    border-color 0.3s ease,
+    background  0.3s ease;
+}
+
+/* glow blob */
+.pill-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    color-mix(in srgb, var(--col) 18%, transparent) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  border-radius: 100px;
+}
+.skill-pill--hovered .pill-glow {
+  opacity: 1;
+}
+
+/* dot */
+.pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--col);
+  box-shadow: 0 0 6px var(--col);
+  flex-shrink: 0;
+  transition: box-shadow 0.3s;
+}
+.skill-pill--hovered .pill-dot {
+  box-shadow: 0 0 12px var(--col), 0 0 20px var(--col);
+}
+
+/* name */
+.pill-name {
+  font-family: "Space Mono", monospace;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: rgba(247, 248, 251, 0.736);
+  text-shadow: 0 0 80px rgba(142, 115, 192, 0.918);
+  letter-spacing: 0.3px;
+  transition: color 0.25s;
+  white-space: nowrap;
+}
+.skill-pill--hovered .pill-name {
+  color: #fff;
+}
+
+/* ── RESPONSIVE ─────────────────────────── */
+@media (max-width: 768px) {
+  .skills { padding: 90px 0 80px; }
+  .skills-headline { font-size: 1.8rem; }
+  .skills-filters { gap: 8px; margin-bottom: 36px; }
+  .filter-btn { font-size: 0.62rem; padding: 7px 16px; }
+  .skill-pill { padding: 9px 16px; }
+  .pill-name { font-size: 0.7rem; }
+}
+
+@media (max-width: 480px) {
+  .skills { padding: 70px 0 60px; }
+  .skills-headline { font-size: 1.5rem; }
+  .skills-filters { gap: 6px; margin-bottom: 28px; }
+  .filter-btn { font-size: 0.58rem; padding: 6px 13px; }
+  .skills-pills { gap: 8px; }
+  .skill-pill { padding: 8px 14px; }
+  .pill-name { font-size: 0.65rem; }
+  .pill-dot { width: 4px; height: 4px; }
+}
