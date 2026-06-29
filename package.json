@@ -3,12 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "oxlint",
-    "preview": "vite preview"
-  },
+ "scripts": {
+  "dev": "vite",
+  "build": "npx vite build",
+  "lint": "oxlint",
+  "preview": "npx vite preview"
+},
   "dependencies": {
     "framer-motion": "^12.42.0",
     "react": "^19.2.7",
@@ -23,3 +23,8 @@
     "vite": "^8.1.0"
   }
 }
+
+
+
+
+ 
