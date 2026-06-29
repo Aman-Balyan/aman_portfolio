@@ -58,7 +58,7 @@ const MISSIONS = [
     company: "FIOS Compliance",
     role:    "Software Engineer",
     period:  "Nov 2025 — June 2026",
-    status:  "ACTIVE",
+    status:  "DEPARTED",
     active:  false,
     tilt:    "-1.5deg",
      color:   "#22d3ee",
