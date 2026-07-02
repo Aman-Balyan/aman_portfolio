@@ -4,8 +4,21 @@ import "./Projects.css";
 // ── PROJECT DATA ──────────────────────────────────────────
 const PROJECTS = [
   {
-    id:      "ai-qgen",
+    id:      "golf",
     number:  "001",
+    title:   "Golf Charity Subscription Platform",
+    tagline: "A subscription-driven platform that combines golf performance tracking, prize rewards, and charitable giving",
+    desc:    "Developed a full-stack web application using Spring Boot and React.js that enables users to manage subscriptions, track golf scores, participate in monthly prize draws, and support charities. Built secure REST APIs with JWT authentication, implemented role-based dashboards for users and admins, and designed business logic for score management, draw execution, and winner verification.",
+    tech:    ["SpringBoot", "React.js", "MySQL"],
+    color:   "#25b081",
+    colorB:  "#c147aa",
+    visual:  "golf",
+    github:  "https://github.com/Aman-Balyan/-Golf-Charity-Subscription-Platform.git",  // replace or remove
+    live:    "https://golf-charity-subscription-platform-frontend-hbtap5247.vercel.app/",  // no live link
+  },
+  {
+    id:      "ai-qgen",
+    number:  "002",
     title:   "AI Question Generation System",
     tagline: "Intelligent automated assessment at scale.",
     desc:    "A Python and Flask REST API backend for AI-powered question generation and automated answer evaluation. Integrates NLP-based semantic similarity scoring — no manual intervention required. Built to replace traditional assessment workflows entirely.",
@@ -13,10 +26,12 @@ const PROJECTS = [
     color:   "#a855f7",
     colorB:  "#6d8eff",
     visual:  "ai",
+    github:  null,  // no github
+    live:    null,  // no live
   },
   {
     id:      "inventory",
-    number:  "002",
+    number:  "003",
     title:   "Inventory Optimization Engine",
     tagline: "Nature-inspired intelligence meets enterprise logistics.",
     desc:    "Implemented Ant Colony Optimization (ACO) and Markov Decision Process (MDP) algorithms in Java to simulate and optimize inventory allocation across dynamic supply chain scenarios. Reduced allocation errors through algorithmic decision-making.",
@@ -24,6 +39,8 @@ const PROJECTS = [
     color:   "#22d3ee",
     colorB:  "#6ee7b7",
     visual:  "inventory",
+    github:  null,
+    live:    null,
   },
 ];
 
@@ -143,6 +160,106 @@ const InventoryVisual = ({ active, color }) => {
   );
 };
 
+
+
+
+const GolfVisual = ({ active, color }) => {
+  const steps = [
+    { x: 10, label: "👤", title: "User" },
+    { x: 30, label: "⛳", title: "Score" },
+    { x: 50, label: "🎟", title: "Draw" },
+    { x: 70, label: "❤️", title: "Charity" },
+    { x: 90, label: "🏆", title: "Winner" },
+  ];
+
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (!active) return;
+
+    const interval = setInterval(() => {
+      setProgress(p => (p + 1) % steps.length);
+    }, 700);
+
+    return () => clearInterval(interval);
+  }, [active]);
+
+  return (
+    <div className="proj-visual proj-visual--golf">
+      <svg viewBox="0 0 100 40" className="golf-svg">
+
+        {/* Line */}
+        <line
+          x1="10"
+          y1="20"
+          x2="90"
+          y2="20"
+          stroke="rgba(255,255,255,.12)"
+          strokeWidth="1"
+        />
+
+        {/* Animated progress */}
+        <line
+          x1="10"
+          y1="20"
+          x2={steps[progress].x}
+          y2="20"
+          stroke={color}
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+
+        {steps.map((s, i) => (
+          <g key={i}>
+            <circle
+              cx={s.x}
+              cy="20"
+              r="4"
+              fill={
+                i <= progress
+                  ? color
+                  : "rgba(10,15,35,.9)"
+              }
+              stroke={color}
+              strokeWidth=".6"
+            />
+
+            <text
+              x={s.x}
+              y="21"
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fontSize="3"
+            >
+              {s.label}
+            </text>
+
+            <text
+              x={s.x}
+              y="31"
+              textAnchor="middle"
+              fontSize="2.5"
+              fill="rgba(200,220,255,.75)"
+              fontFamily="Space Mono"
+            >
+              {s.title}
+            </text>
+          </g>
+        ))}
+      </svg>
+
+      <div className="inv-label" style={{ color }}>
+        Monthly draw processing...
+      </div>
+    </div>
+  );
+};
+
+
+
+
+
+
 // ── PROJECT PANEL ─────────────────────────────────────────
 const ProjectPanel = ({ project, index, inView }) => {
   const [hovered, setHovered] = useState(false);
@@ -198,21 +315,76 @@ const ProjectPanel = ({ project, index, inView }) => {
         <p className="proj-desc">{project.desc}</p>
 
         {/* tech stack */}
-        <div className="proj-tech">
-          {project.tech.map((t) => (
-            <span key={t} className="proj-tech-tag">{t}</span>
-          ))}
-        </div>
+       {/* tech stack */}
+<div className="proj-tech">
+  {project.tech.map((t) => (
+    <span key={t} className="proj-tech-tag">{t}</span>
+  ))}
+</div>
+
+{/* links — only show if they exist */}
+{(project.github || project.live) && (
+  <div className="proj-links">
+    {project.github && (
+      <a
+        href={project.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="proj-link proj-link--github"
+        style={{ "--col": project.color }}
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+        GitHub
+      </a>
+    )}
+    {project.live && (
+      <a
+        href={project.live}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="proj-link proj-link--live"
+        style={{ "--col": project.color }}
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+        Live Demo
+      </a>
+    )}
+  </div>
+)}
+
+
+
+
+
+
 
       </div>
 
       {/* right — visual */}
-      <div className="proj-visual-wrap">
-        {project.visual === "ai"
-          ? <AIVisual active={hovered || visible} color={project.color} />
-          : <InventoryVisual active={hovered || visible} color={project.color} />
-        }
-      </div>
+<div className="proj-visual-wrap">
+  {project.visual === "ai" ? (
+    <AIVisual
+      active={hovered || visible}
+      color={project.color}
+    />
+  ) : project.visual === "golf" ? (
+    <GolfVisual
+      active={hovered || visible}
+      color={project.color}
+    />
+  ) : (
+    <InventoryVisual
+      active={hovered || visible}
+      color={project.color}
+    />
+  )}
+</div>
 
     </div>
   );
